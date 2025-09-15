@@ -4,14 +4,13 @@ require("dotenv").config();
 
 const app = express();
 
-// Middleware to parse JSON
+
 app.use(express.json());
 
-// Load environment variables
 const PORT = process.env.PORT || 5000;
 const MONGO_URI = process.env.MONGO_URI;
 
-// Connect to MongoDB
+
 mongoose
   .connect(MONGO_URI)
   .then(() => {
@@ -22,10 +21,10 @@ mongoose
   })
   .catch((error) => {
     console.error("❌ Error connecting to MongoDB:", error.message);
-    process.exit(1); // Exit process if DB connection fails
+    process.exit(1); 
   });
 
-// Example test route
+
 app.get("/", (req, res) => {
   res.send("Student Project Tracker API is running...");
 });
